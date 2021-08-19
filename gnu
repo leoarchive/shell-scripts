@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+fn=$2
 
 license="/*
  *  $1 
@@ -18,24 +20,35 @@ license="/*
  *  along with this program.  if not, see <http://www.gnu.org/licenses/>.
  */"
 
-hello="
+hello_c="
 #include <stdio.h>
 
 int main(void) {
 	printf(\"Hello, world!\"); 
 	return 0;
-}
-"
+}"
 
-file_name=$2
+uppfn=${fn^^}
 
-language=$3
+header_c="
+#ifndef ${uppfn%%.*}_H 
+#define ${uppfn%%.*}_H
 
-if [ $language = "-c" ]; then
-	echo "$license" "$hello" > $file_name
-	vim $file_name +'call cursor(21,33)'
-else
-	echo "$license" > $file_name
-	vim $file_name +${#license}
-fi
 
+
+#endif"
+
+case $3 in
+	"-c") 
+		echo "$license" "$hello_c" > $fn
+		vim $fn +'call cursor(21,33)'
+		;;
+	"-ch")
+		echo "$license" "$header_c" > $fn
+		vim $fn +21
+		;;
+	*)
+		echo "$license" > $fn
+		vim $fn +${#license}
+		;;
+esac
