@@ -1,4 +1,3 @@
 my personal shell scripts collection
 
-./gnu "program name" <file_name> -c // create C file with gnu license header
-
+gnu "program name" <file_name> <flag> // create C file with gnu license header
