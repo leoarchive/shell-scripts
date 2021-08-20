@@ -7,5 +7,5 @@ then
 	comment="updaate"
 fi
 
-git add --all & git commit -m "$comment" & git push
+git add --all && git commit -m "$comment" && git push
 
