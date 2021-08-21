@@ -1,3 +1,4 @@
+# git quickly push
 #!/bin/bash
 
 comment=$1

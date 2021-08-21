@@ -1,10 +1,6 @@
-#!/bin/bash
-
-file=$2
-uppfile=${file^^}
-license="/*
- *  $1 
- *  Copyright (c) $(date +'%Y') Leonardo Zamboni
+/*
+ *  opa 
+ *  Copyright (c) 2021 Leonardo Zamboni
  * 
  *  this program is free software: you can redistribute it and/or modify
  *  it under the terms of the gnu general public license as published by
@@ -18,35 +14,10 @@ license="/*
  *  
  *  you should have received a copy of the gnu general public license
  *  along with this program.  if not, see <http://www.gnu.org/licenses/>.
- */"
-
-hello="
-#include <stdio.h>
-
-int main(void) {
-	printf(\"Hello, world!\");
-	return 0;
-}"
-
-header="
-#ifndef ${uppfile%%.*}_H
-#define ${uppfile%%.*}_H
+ */ 
+#ifndef ALO_H
+#define ALO_H
 
 
 
-#endif"
-
-case $3 in
-	"-c") 
-		echo "$license" "$hello" > $file
-		vim $file +'call cursor(21,33)'
-		;;
-	"-h")
-		echo "$license" "$header" > $file
-		vim $file +21
-		;;
-	*)
-		echo "$license" > $file
-		vim $file + ${#license}
-		;;
-esac
+#endif
