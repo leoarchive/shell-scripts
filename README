@@ -1,4 +1,4 @@
 my shell scripts collection
 
-gnu "program name" <file_name> <flag> // create C file with gnu license header
+cgnu "program name" <file_name> <flag> // create C file with gnu license header
 makemake // makefile template
