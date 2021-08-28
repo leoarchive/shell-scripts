@@ -1,9 +1,8 @@
-# git quickly push
 #!/bin/bash
 
 comment=$1
 
-if [ -z "$comment" ]
+if test !"$comment"
 then
 	comment="update"
 fi

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+bash="#!/bin/bash\n\n\nprintf \"Hello, world!\""
+
+printf "$bash" > $1 
+vi $1 +3

@@ -32,21 +32,25 @@ header="
 #ifndef ${uppfile%%.*}_H
 #define ${uppfile%%.*}_H
 
-
-
 #endif"
 
-case $3 in
-	"-c") 
-		echo "$license" "$hello" > $file
-		vim $file +'call cursor(21,33)'
-		;;
-	"-h")
-		echo "$license" "$header" > $file
-		vim $file +21
-		;;
-	*)
-		echo "$license" > $file
-		vim $file + ${#license}
-		;;
-esac
+if test "$3"
+then 
+	case $3 in
+		"-c") 
+			printf "$license $hello" > $file
+			vim $file +'call cursor(21,33)'
+			;;
+		"-h")
+			printf "$license $header" > $file
+			vim $file +21
+			;;
+		*)
+			printf "$license" > $file
+			vim $file + ${#license}
+			;;
+	esac
+else 
+	printf "$license $hello" > $file
+	vim $file +'call cursor(21,33)'
+fi
