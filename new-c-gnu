@@ -34,23 +34,17 @@ header="
 
 #endif"
 
-if test "$3"
-then 
-	case $3 in
-		"-c") 
-			printf "$license $hello" > $file
-			vim $file +'call cursor(21,33)'
-			;;
-		"-h")
-			printf "$license $header" > $file
-			vim $file +21
-			;;
-		*)
-			printf "$license" > $file
-			vim $file + ${#license}
-			;;
-	esac
-else 
-	printf "$license $hello" > $file
-	vim $file +'call cursor(21,33)'
-fi
+case $3 in
+	"-c") 
+		printf "$license $hello" > $file
+		vim $file +'call cursor(21,33)'
+		;;
+	"-h")
+		printf "$license $header" > $file
+		vim $file +21
+		;;
+	*)
+		printf "$license" > $file
+		vim $file + ${#license}
+		;;
+esac
