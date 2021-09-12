@@ -1,12 +1,9 @@
 #!/bin/bash
 asd=$"(defsystem \"$1\"
 	:author \"Leonardo Zamboni <leonardonunes169@gmail.com>\"
-  	:maintainer \"Leonardo Zamboni <leonardonunes169@gmail.com>\"  
 	:license \"LLGPL\"
   	:version \"0.1\"
   	:homepage \"https://github.com/leozamboni/$1\"
-  	:bug-tracker \"https://github.com/leozamboni/$1/issues\"
-  	:source-control (:git \"git@github.com:leozamboni/$1.git\")
   	:description \"\"
   	:depends-on ()
   		:components ((:module \"src\"
