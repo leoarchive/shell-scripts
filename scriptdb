@@ -1,0 +1,21 @@
+#!/bin/bash
+# scriptdb -c <name> <description>
+# scriptdb -d <line>
+
+data_access_object()
+{
+case $1 in
+	"-c")
+		shift 1
+		printf '%s ' "$@" >> SCRIPTS && printf "\n" >> SCRIPTS
+		;;
+	"-d") 
+		sed -i "$2d" SCRIPTS
+		;;
+	"-p")
+		cat SCRIPTS
+		;;
+esac
+}
+
+data_access_object $@

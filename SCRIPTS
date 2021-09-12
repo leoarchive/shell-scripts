@@ -1,0 +1,8 @@
+scriptdb | -c <name> <arguments> <description> | -d <line> | db for my scripts 
+create-c-project | create new C project 
+create-lisp-system | create new Lisp lib 
+gpl | get gpl3 license 
+new-bash | new bash script 
+new-c-gnu | <file name> | -c <description> <file name> | -h <file name> | new C file with GNU header 
+new-makefile | new makefile 
+qpush | git quickly push 
