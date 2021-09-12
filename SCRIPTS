@@ -1,4 +1,4 @@
-scriptdb | -c <name> <arguments> <description> | -d <line> | db for my scripts 
+scriptdb | -c <name> <arguments> <description> | -d <line> | -p | db for my scripts 
 create-c-project | create new C project 
 create-lisp-system | create new Lisp lib 
 gpl | get gpl3 license 

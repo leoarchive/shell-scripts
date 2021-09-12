@@ -13,7 +13,7 @@ case $1 in
 		sed -i "$2d" SCRIPTS
 		;;
 	"-p")
-		cat SCRIPTS
+		cat /home/leozamboni/Documents/my-shell-scripts/SCRIPTS
 		;;
 esac
 }
