@@ -1,0 +1,117 @@
+#!/bin/bash
+
+open=false
+
+isopen()
+{
+    if [ $open ];
+    then
+        echo $ctag
+        open=false
+    fi
+}
+
+save()
+{
+    ctag=$1
+    open=true
+}
+
+parser()
+{
+    case $word in
+        "#")
+            isopen
+            echo "<h1>"
+            save "</h1>"
+            ;;
+        "##")
+            isopen
+            echo "<h2>"
+            save "</h2>"
+            ;;
+        "###")
+            isopen
+            echo "<h3>"
+            save "</h3>"
+            ;;
+        "####")
+            isopen
+            echo "<h4>"
+            save "</h4>"
+            ;;
+        "#####")
+            isopen
+            echo "<h5>"
+            save "</h5>"
+            ;;
+        "######")
+            isopen
+            echo "<h6>"
+            save "</h6>"
+            ;;
+        ">") # blockquote
+            isopen
+            echo "<blockquote>"
+            save "</blockquote>"
+            ;;
+        "-"|"+") # Lists
+            isopen
+            echo "<li>"
+            save "</li>"
+            ;;
+        *) 
+            # Bold
+            if [[ $word == *"**"* ]] || [[ $word == *"__"* ]];
+            then
+                if [[ ${word:2} == *"**"* ]] || [[ ${word:2} == *"__"* ]] || [[ ${word:2} == *"*"* ]] || [[ ${word:2} == *"_"* ]]; 
+                then
+                    if [[ ${word::-3} == *"**"* ]] || [[ ${word::-3} == *"__"* ]]; 
+                    then
+                        isopen
+                        echo "<strong> ${word:2:-3}"
+                        save "</strong>"
+                    else
+                        if [[ $word == *"**"* ]];
+                        then
+                            echo "${word::-3}"
+                        else
+                            echo "${word::-2}"
+                        fi
+                    fi
+                else
+                    isopen
+                    echo "<strong> ${word:2}"
+                    save "</strong>"
+                fi
+            # Italic
+            elif [[ $word == *"*"* ]] || [[ $word == *"_"* ]];
+            then
+                if [[ ${word:1} == *"*"* ]] || [[ ${word:1} == *"_"* ]]; 
+                then
+                    if [[ ${word::-2} == *"*"* ]] || [[ ${word::-2} == *"_"* ]]; 
+                    then
+                        isopen
+                        echo "<em> ${word:1:-2}"
+                        save "</em>"
+                    else
+                        echo "${word::-2}"
+                    fi
+                else
+                    isopen
+                    echo "<em> ${word:1}"
+                    save "</em>"
+                fi
+            else 
+                echo "$word"
+            fi
+            ;;
+    esac
+}
+
+for word in $(<file.md)
+do
+    parser $word
+done
+
+isopen

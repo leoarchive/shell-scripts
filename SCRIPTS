@@ -6,3 +6,4 @@ new-bash | new bash script
 new-c-gnu | <file name> | -c <description> <file name> | -h <file name> | new C file with GNU header 
 new-makefile | new makefile 
 qpush | git quickly push 
+md2html | markdown to html
